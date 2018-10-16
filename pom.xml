@@ -105,7 +105,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-    <!--<modules>...</modules>-->
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -114,10 +114,6 @@
         <sonar.dynamicAnalysis>reuseReports</sonar.dynamicAnalysis>
     </properties>
 
-    <prerequisites>
-        <maven>3.0.4</maven>
-    </prerequisites>
-
 
     <!--
     mvn versions:display-plugin-updates
@@ -125,71 +121,105 @@
     -->
     <!-- Build Settings -->
     <build>
+        <extensions>
+            <!-- this is to enable the scp protocol in site deploy -->
+            <extension>
+                <groupId>org.apache.maven.wagon</groupId>
+                <artifactId>wagon-ssh</artifactId>
+                <version>3.2.0</version>
+            </extension>
+        </extensions>
+
         <pluginManagement>
             <plugins>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-clean-plugin</artifactId>
-                    <version>2.6.1</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-resources-plugin</artifactId>
-                    <version>2.7</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.2</version>
+                    <version>3.8.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-surefire-plugin</artifactId>
-                    <version>2.18.1</version>
+                    <version>2.22.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-jar-plugin</artifactId>
-                    <version>2.6</version>
+                    <version>3.1.0</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-failsafe-plugin</artifactId>
-                    <version>2.18.1</version>
+                    <version>2.22.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-source-plugin</artifactId>
-                    <version>2.4</version>
+                    <version>3.0.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
-                    <version>2.10.2</version>
+                    <version>3.0.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-install-plugin</artifactId>
-                    <version>2.5.2</version>
+                    <version>3.0.0-M1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-site-plugin</artifactId>
-                    <version>3.4</version>
+                    <version>3.7.1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-deploy-plugin</artifactId>
-                    <version>2.8.2</version>
+                    <version>3.0.0-M1</version>
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-release-plugin</artifactId>
-                    <version>2.5.1</version>
+                    <version>2.5.3</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
                 </plugin>
             </plugins>
         </pluginManagement>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+                <version>3.0.0-M2</version>
+                <executions>
+                    <execution>
+                        <id>enforce-maven</id>
+                        <goals>
+                            <goal>enforce</goal>
+                        </goals>
+                        <configuration>
+                            <rules>
+                                <requireMavenVersion>
+                                    <version>3.0.4</version>
+                                </requireMavenVersion>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -231,13 +261,6 @@
             </plugin>
         </plugins>
     </build>
-    <!--<reporting>...</reporting>-->
-
-    <!-- More Project Information -->
-    <!--<name>...</name>-->
-    <!--<description>...</description>-->
-    <!--<url>...</url>-->
-    <!--<inceptionYear>...</inceptionYear>-->
     <licenses>
         <license>
             <name>The Apache Software License, Version 2.0</name>
@@ -245,38 +268,14 @@
             <distribution>repo</distribution>
         </license>
     </licenses>
-    <!--<organization>...</organization>-->
-    <developers>
-        <developer>
-            <name>Michael Panchenko</name>
-            <email>panchmp@gmail.com</email>
-        </developer>
-    </developers>
-    <!--<contributors>...</contributors>-->
-	<contributors>
-		<contributor>
-			<name>Olivier Depriester</name>
-			<email>oldep@smile.fr</email>
-		</contributor>
-	</contributors>
-    <!-- Environment Settings -->
-    <issueManagement>
-        <system>github</system>
-        <url>https://github.com/openwide-java/geocoder-java</url>
-    </issueManagement>
-    <ciManagement>
-        <system>Travis CI</system>
-        <url>https://github.com/openwide-java/geocoder-java</url>
-    </ciManagement>
 
-    <!--<mailingLists>...</mailingLists>-->
     <scm>
-        <connection>scm:git:git@github.com:openwide-java/geocoder-java.git</connection>
-        <developerConnection>scm:git:git@github.com:openwide-java/geocoder-java.git</developerConnection>
-        <url>scm:git:git@github.com:openwide-java/geocoder-java.git</url>
+        <connection>scm:git:git@git.smile.fr:skill-center-lyon/owsi-core/geocoder-java.git</connection>
+        <developerConnection>scm:git:git@git.smile.fr:skill-center-lyon/owsi-core/geocoder-java.git</developerConnection>
+        <url>https://git.smile.fr/skill-center-lyon/owsi-core/geocoder-java</url>
         <tag>HEAD</tag>
     </scm>
-    <!--<prerequisites>...</prerequisites>-->
+
     <repositories>
         <repository>
             <id>jboss-public-repository-group</id>
@@ -303,14 +302,20 @@
             </releases>
         </repository>
     </repositories>
-    <!--<pluginRepositories>...</pluginRepositories>-->
 
     <distributionManagement>
-        <repository>
-            <id>nexus-owsi-external</id>
-            <name>Google - Geocoder Java</name>
-            <url>https://projects.openwide.fr/services/nexus/content/repositories/owsi-external/</url>
-        </repository>
+        <repository> 
+            <id>nexus.internal.releases</id>
+            <url>https://nexus.vitry.intranet/content/repositories/InternalSmileReleases/</url> 
+        </repository> 
+        <snapshotRepository> 
+            <id>nexus.internal.snapshots</id>
+            <url>https://nexus.vitry.intranet/content/repositories/InternalSmileSnapshots/</url> 
+        </snapshotRepository> 
+        <site>
+           <id>maven.doc.smile</id>
+           <url>scp://pic-java.vitry.intranet/var/www/${project.groupId}/${project.artifactId}</url>
+        </site>
     </distributionManagement>
 
     <!--<profiles>...</profiles>-->
