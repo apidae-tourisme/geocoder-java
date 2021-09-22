@@ -6,7 +6,7 @@
     <!-- The Basics -->
     <groupId>com.google.code.geocoder-java</groupId>
     <artifactId>geocoder-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.1</version>
     <packaging>jar</packaging>
 
     <name>Geocoder</name>
@@ -100,7 +100,7 @@
             <dependency>
                 <groupId>commons-logging</groupId>
                 <artifactId>commons-logging</artifactId>
-                <version>99.0-does-not-exist</version>
+                <version>1.2</version>
                 <scope>test</scope>
             </dependency>
         </dependencies>
@@ -304,18 +304,6 @@
     </repositories>
 
     <distributionManagement>
-        <repository> 
-            <id>nexus.internal.releases</id>
-            <url>https://nexus.vitry.intranet/content/repositories/InternalSmileReleases/</url> 
-        </repository> 
-        <snapshotRepository> 
-            <id>nexus.internal.snapshots</id>
-            <url>https://nexus.vitry.intranet/content/repositories/InternalSmileSnapshots/</url> 
-        </snapshotRepository> 
-        <site>
-           <id>maven.doc.smile</id>
-           <url>scp://pic-java.vitry.intranet/var/www/${project.groupId}/${project.artifactId}</url>
-        </site>
     </distributionManagement>
 
     <!--<profiles>...</profiles>-->
