@@ -6,7 +6,7 @@
     <!-- The Basics -->
     <groupId>com.google.code.geocoder-java</groupId>
     <artifactId>geocoder-java</artifactId>
-    <version>1.1</version>
+    <version>1.1.0-SNAPSHOT</version>
     <packaging>jar</packaging>
 
     <name>Geocoder</name>
@@ -270,11 +270,12 @@
     </licenses>
 
     <scm>
-        <connection>scm:git:git@git.smile.fr:skill-center-lyon/owsi-core/geocoder-java.git</connection>
-        <developerConnection>scm:git:git@git.smile.fr:skill-center-lyon/owsi-core/geocoder-java.git</developerConnection>
-        <url>https://git.smile.fr/skill-center-lyon/owsi-core/geocoder-java</url>
+        <url>git@github.com:apidae-tourisme/geocoder-java.git</url>
+        <connection>scm:git:git@github.com:apidae-tourisme/geocoder-java.git</connection>
+        <developerConnection>scm:git:https://github.com/apidae-tourisme/geocoder-java.git</developerConnection>
         <tag>HEAD</tag>
     </scm>
+
 
     <repositories>
         <repository>
@@ -304,6 +305,11 @@
     </repositories>
 
     <distributionManagement>
+        <repository>
+            <id>github</id>
+            <name>github OWSI Core</name>
+            <url>https://maven.pkg.github.com/apidae-tourisme/geocoder-java</url>
+        </repository>
     </distributionManagement>
 
     <!--<profiles>...</profiles>-->
