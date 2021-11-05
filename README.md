@@ -14,10 +14,17 @@ Now artifact deployed to central repository
   <dependency>
     <groupId>com.google.code.geocoder-java</groupId>
     <artifactId>geocoder-java</artifactId>
-    <version>1.0.0</version>
+    <version>1.1.0</version>
   </dependency>
   <!-- ... -->
 </dependencies>
+<repositories>
+    <repository>
+        <id>bucket-release-repo</id>
+        <url>https://apidae-sit-packages.s3.eu-west-3.amazonaws.com/release</url>
+    </repository>
+    <!-- ... -->
+</repositories>
 ```
 
 #### Direct Download
